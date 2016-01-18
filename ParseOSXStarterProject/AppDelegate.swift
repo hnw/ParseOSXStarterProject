@@ -23,7 +23,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         // ****************************************************************************
         // Uncomment and fill in with your Parse credentials:
-        // [Parse setApplicationId:@"your_application_id" clientKey:@"your_client_key"];
+        // Parse.setApplicationId("your_application_id", clientKey:"your_client_key")
         // ****************************************************************************
 
         PFUser.enableAutomaticUser()
@@ -34,15 +34,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         PFACL.setDefaultACL(defaultACL, withAccessForCurrentUser: true)
 
-        // ****************************************************************************
-        // Uncomment these lines to register for Push Notifications.
-        //
-        // let types = NSRemoteNotificationType.Alert |
-        //             NSRemoteNotificationType.Badge |
-        //             NSRemoteNotificationType.Sound;
-        // NSApplication.sharedApplication().registerForRemoteNotificationTypes(types)
-        //
-        // ****************************************************************************
+        let types : NSRemoteNotificationType = [
+            NSRemoteNotificationType.Alert,
+            NSRemoteNotificationType.Badge,
+            NSRemoteNotificationType.Sound
+        ]
+        NSApp.registerForRemoteNotificationTypes(types)
 
         PFAnalytics.trackAppOpenedWithLaunchOptions(nil)
     }
